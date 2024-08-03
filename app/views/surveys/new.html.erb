@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>人事労務課職員旅行アンケート</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .form-group input[type="radio"] {
+      width: auto;
+    }
+    .form-actions {
+      text-align: right;
+    }
+    .form-actions button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-actions button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>人事労務課職員旅行アンケート</h1>
+    <%= form_with model: @survey, local: true do |form| %>
+      <div class="form-group">
+        <label>1. 「日帰り」「泊まり」「どちらでもよい」を選んでください</label>
+        <label>
+          <%= form.radio_button :choice, "日帰り" %> 日帰り
+        </label>
+        <label>
+          <%= form.radio_button :choice, "泊まり" %> 泊まり
+        </label>
+        <label>
+          <%= form.radio_button :choice, "どちらでもよい" %> どちらでもよい
+        </label>
+      </div>
+      <div class="form-group">
+        <label>2. 行き先の希望と理由</label>
+        <%= form.text_field :destination, placeholder: "行き先の希望" %>
+        <%= form.text_area :reason, placeholder: "その理由" %>
+      </div>
+      <div class="form-actions">
+        <button type="submit">送信</button>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
