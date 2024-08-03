@@ -6,11 +6,14 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(survey_params)
     if @survey.save
-      flash[:notice] = "アンケートにご協力いただきありがとうございました。"
-      redirect_to root_path
+      redirect_to thank_you_path # 送信完了後にリダイレクト
     else
       render :new
     end
+  end
+
+  def thank_you
+    # ここでは特に何もしませんが、カスタムメッセージやロジックを追加することも可能です
   end
 
   private

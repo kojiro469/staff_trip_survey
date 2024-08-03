@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root 'surveys#new'
   resources :surveys, only: [:new, :create]
+  get 'thank_you', to: 'surveys#thank_you', as: 'thank_you' # 追加
   
 end

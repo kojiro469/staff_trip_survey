@@ -3,47 +3,87 @@
 <head>
   <title>人事労務課職員旅行アンケート</title>
   <style>
+    /* 背景 */
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b); /* グラデーション背景 */
+      color: #333;
     }
+    /* コンテナ */
     .container {
       max-width: 600px;
-      margin: 0 auto;
+      margin: 50px auto;
       padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+      background: #fff; /* 白背景 */
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 影の追加 */
+      animation: fadeIn 1s ease-in-out; /* フェードインアニメーション */
     }
+    /* タイトル */
+    h1 {
+      text-align: center;
+      color: #ff7e5f; /* テーマカラー */
+    }
+    /* フォームグループ */
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
+    /* ラベル */
     .form-group label {
       display: block;
       margin-bottom: 5px;
+      font-weight: bold;
     }
+    /* テキストフィールドとテキストエリア */
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
+      border: 2px solid #ff7e5f; /* 枠線にテーマカラー */
+      border-radius: 5px;
       box-sizing: border-box;
+      transition: border-color 0.3s ease; /* アニメーション */
     }
+    /* ラジオボタン */
     .form-group input[type="radio"] {
       width: auto;
+      margin-right: 10px;
     }
+    /* ホバー効果 */
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #feb47b; /* フォーカス時の色変更 */
+    }
+    /* 送信ボタン */
     .form-actions {
       text-align: right;
     }
+    /* ボタン */
     .form-actions button {
       padding: 10px 20px;
-      background-color: #007BFF;
+      background-color: #ff7e5f;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease; /* アニメーション */
     }
+    /* ホバー効果 */
     .form-actions button:hover {
-      background-color: #0056b3;
+      background-color: #feb47b;
+    }
+    /* フェードインアニメーション */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -52,7 +92,7 @@
     <h1>人事労務課職員旅行アンケート</h1>
     <%= form_with model: @survey, local: true do |form| %>
       <div class="form-group">
-        <label>1. 「日帰り」「泊まり」「どちらでもよい」を選んでください</label>
+        <label>1. 日帰りか泊まりかどちらでもよいか</label>
         <label>
           <%= form.radio_button :choice, "日帰り" %> 日帰り
         </label>
@@ -73,5 +113,14 @@
       </div>
     <% end %>
   </div>
+
+  <!-- JavaScript -->
+  <script>
+    // 送信ボタンクリック時にアニメーション
+    document.querySelector('button').addEventListener('click', function() {
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => this.style.transform = 'scale(1)', 100);
+    });
+  </script>
 </body>
 </html>
